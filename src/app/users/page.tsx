@@ -15,11 +15,13 @@ export default function UsersPage() {
   } = useFetch<User[]>("/api/users", t("users.error"));
 
   return (
-    <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col gap-8 py-16 px-16 bg-white dark:bg-black">
-        <h1 className="text-3xl font-semibold tracking-tight text-black dark:text-zinc-50">
-          {t("users.title")}
-        </h1>
+    <div className="flex flex-1 flex-col bg-zinc-50 dark:bg-black">
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-semibold tracking-tight text-black dark:text-zinc-50">
+            {t("users.title")}
+          </h1>
+        </div>
 
         {loading && (
           <p className="text-zinc-600 dark:text-zinc-400">
@@ -40,7 +42,7 @@ export default function UsersPage() {
         )}
 
         {!loading && !error && (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {(users ?? []).map((user) => (
               <article
                 key={user.id}
@@ -67,6 +69,9 @@ export default function UsersPage() {
           </div>
         )}
       </main>
+      <footer className="w-full py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
+        &copy; 2026 Simple App
+      </footer>
     </div>
   );
 }
