@@ -50,4 +50,4 @@ All pages are client components (`"use client"`) that fetch from internal API ro
 ## Workflow
 
 - **Auto-commit and push**: When a task is completed, commit all related changes and push directly to `main` without asking. Do not wait for confirmation.
-- **Screenshot cleanup**: Any screenshot files (`.png`, `.jpg`, `.jpeg`) created during debugging or visual verification must be deleted before committing. Never commit screenshot files to the repo.
+- **Screenshot cleanup**: Handled automatically by a PostToolUse hook (`.claude/scripts/cleanup-screenshots.sh`) that deletes screenshots after Playwright captures them.
