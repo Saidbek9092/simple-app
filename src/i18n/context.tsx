@@ -1,6 +1,11 @@
 "use client";
 
-import { createContext, useCallback, useContext, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useSyncExternalStore,
+} from "react";
 import { translations, type Locale, type TranslationKey } from "./translations";
 
 interface I18nContextValue {
@@ -13,20 +18,39 @@ const I18nContext = createContext<I18nContextValue | null>(null);
 
 const STORAGE_KEY = "locale";
 
-function getInitialLocale(): Locale {
-  if (typeof window === "undefined") return "en";
+type Listener = () => void;
+const listeners = new Set<Listener>();
+
+function emitChange() {
+  for (const listener of listeners) listener();
+}
+
+function subscribe(listener: Listener) {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
+function getClientLocale(): Locale {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored === "en" || stored === "es") return stored;
   const browser = navigator.language.slice(0, 2).toLowerCase();
   return browser === "es" ? "es" : "en";
 }
 
+function getServerLocale(): Locale {
+  return "en";
+}
+
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(getInitialLocale);
+  const locale = useSyncExternalStore(
+    subscribe,
+    getClientLocale,
+    getServerLocale,
+  );
 
   const setLocale = useCallback((next: Locale) => {
     localStorage.setItem(STORAGE_KEY, next);
-    setLocaleState(next);
+    emitChange();
   }, []);
 
   const t = useCallback(
