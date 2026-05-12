@@ -66,7 +66,7 @@ export default function Home() {
         </div>
       </main>
       <footer className="w-full max-w-3xl py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
-        2026
+        &copy; 2026 Simple App
       </footer>
     </div>
   );
