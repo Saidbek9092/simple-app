@@ -26,7 +26,17 @@ export type TranslationKey =
   | "theme.dark"
   | "theme.light"
   | "lang.en"
-  | "lang.es";
+  | "lang.es"
+  | "dashboard.title"
+  | "dashboard.totalPosts"
+  | "dashboard.totalUsers"
+  | "dashboard.totalComments"
+  | "dashboard.recentPosts"
+  | "dashboard.topCommenters"
+  | "dashboard.comments"
+  | "dashboard.loading"
+  | "dashboard.error"
+  | "dashboard.viewAllPosts";
 
 type Translations = Record<TranslationKey, string>;
 
@@ -59,6 +69,16 @@ export const translations: Record<Locale, Translations> = {
     "theme.light": "Light mode",
     "lang.en": "EN",
     "lang.es": "ES",
+    "dashboard.title": "Dashboard",
+    "dashboard.totalPosts": "Total Posts",
+    "dashboard.totalUsers": "Total Users",
+    "dashboard.totalComments": "Total Comments",
+    "dashboard.recentPosts": "Recent Posts",
+    "dashboard.topCommenters": "Top Commenters",
+    "dashboard.comments": "comments",
+    "dashboard.loading": "Loading dashboard...",
+    "dashboard.error": "Failed to load dashboard data",
+    "dashboard.viewAllPosts": "View all posts",
   },
   es: {
     "nav.home": "Inicio",
@@ -87,5 +107,15 @@ export const translations: Record<Locale, Translations> = {
     "theme.light": "Modo claro",
     "lang.en": "EN",
     "lang.es": "ES",
+    "dashboard.title": "Panel",
+    "dashboard.totalPosts": "Total de publicaciones",
+    "dashboard.totalUsers": "Total de usuarios",
+    "dashboard.totalComments": "Total de comentarios",
+    "dashboard.recentPosts": "Publicaciones recientes",
+    "dashboard.topCommenters": "Principales comentaristas",
+    "dashboard.comments": "comentarios",
+    "dashboard.loading": "Cargando panel...",
+    "dashboard.error": "Error al cargar los datos del panel",
+    "dashboard.viewAllPosts": "Ver todas las publicaciones",
   },
 };
