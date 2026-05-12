@@ -5,6 +5,8 @@ export type TranslationKey =
   | "nav.posts"
   | "nav.users"
   | "nav.comments"
+  | "nav.menu"
+  | "nav.close"
   | "posts.title"
   | "posts.loading"
   | "posts.error"
@@ -36,6 +38,8 @@ export const translations: Record<Locale, Translations> = {
     "nav.posts": "Posts",
     "nav.users": "Users",
     "nav.comments": "Comments",
+    "nav.menu": "Open navigation menu",
+    "nav.close": "Close navigation menu",
     "posts.title": "Posts",
     "posts.loading": "Loading posts...",
     "posts.error": "Failed to fetch posts",
@@ -65,6 +69,8 @@ export const translations: Record<Locale, Translations> = {
     "nav.posts": "Publicaciones",
     "nav.users": "Usuarios",
     "nav.comments": "Comentarios",
+    "nav.menu": "Abrir menú de navegación",
+    "nav.close": "Cerrar menú de navegación",
     "posts.title": "Publicaciones",
     "posts.loading": "Cargando publicaciones...",
     "posts.error": "Error al cargar las publicaciones",
