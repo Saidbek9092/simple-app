@@ -65,6 +65,9 @@ export default function Home() {
           </a>
         </div>
       </main>
+      <footer className="w-full max-w-3xl py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
+        2026
+      </footer>
     </div>
   );
 }
