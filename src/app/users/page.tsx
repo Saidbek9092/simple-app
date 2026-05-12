@@ -7,10 +7,12 @@ import { useFetch } from "@/hooks/useFetch";
 
 export default function UsersPage() {
   const { t } = useTranslation();
-  const { data: users, loading, error, refetch } = useFetch<User[]>(
-    "/api/users",
-    t("users.error")
-  );
+  const {
+    data: users,
+    loading,
+    error,
+    refetch,
+  } = useFetch<User[]>("/api/users", t("users.error"));
 
   return (
     <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black">
@@ -20,7 +22,9 @@ export default function UsersPage() {
         </h1>
 
         {loading && (
-          <p className="text-zinc-600 dark:text-zinc-400">{t("users.loading")}</p>
+          <p className="text-zinc-600 dark:text-zinc-400">
+            {t("users.loading")}
+          </p>
         )}
 
         {error && (

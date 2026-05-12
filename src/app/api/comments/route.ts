@@ -18,7 +18,10 @@ export async function GET(request: NextRequest) {
       author: comment.name,
       email: comment.email,
       body: comment.body,
-      excerpt: comment.body.length > 100 ? comment.body.slice(0, 100) + "..." : comment.body,
+      excerpt:
+        comment.body.length > 100
+          ? comment.body.slice(0, 100) + "..."
+          : comment.body,
     }));
 
     const searchParams = request.nextUrl.searchParams;
@@ -31,7 +34,7 @@ export async function GET(request: NextRequest) {
       comments = comments.filter(
         (comment) =>
           comment.author.toLowerCase().includes(term) ||
-          comment.body.toLowerCase().includes(term)
+          comment.body.toLowerCase().includes(term),
       );
     }
 
@@ -43,7 +46,12 @@ export async function GET(request: NextRequest) {
       const start = (page - 1) * limit;
       const data = comments.slice(start, start + limit);
 
-      const paginated: PaginatedResponse<Comment> = { data, total, page, totalPages };
+      const paginated: PaginatedResponse<Comment> = {
+        data,
+        total,
+        page,
+        totalPages,
+      };
       return Response.json(paginated);
     }
 

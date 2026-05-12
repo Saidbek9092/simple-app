@@ -6,10 +6,12 @@ import { useFetch } from "@/hooks/useFetch";
 
 export default function PostsPage() {
   const { t } = useTranslation();
-  const { data: posts, loading, error, refetch } = useFetch<Post[]>(
-    "/api/posts",
-    t("posts.error")
-  );
+  const {
+    data: posts,
+    loading,
+    error,
+    refetch,
+  } = useFetch<Post[]>("/api/posts", t("posts.error"));
 
   return (
     <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black">
@@ -19,7 +21,9 @@ export default function PostsPage() {
         </h1>
 
         {loading && (
-          <p className="text-zinc-600 dark:text-zinc-400">{t("posts.loading")}</p>
+          <p className="text-zinc-600 dark:text-zinc-400">
+            {t("posts.loading")}
+          </p>
         )}
 
         {error && (

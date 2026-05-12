@@ -6,10 +6,12 @@ import { useFetch } from "@/hooks/useFetch";
 
 export default function CommentsPage() {
   const { t } = useTranslation();
-  const { data: comments, loading, error, refetch } = useFetch<Comment[]>(
-    "/api/comments",
-    t("comments.error")
-  );
+  const {
+    data: comments,
+    loading,
+    error,
+    refetch,
+  } = useFetch<Comment[]>("/api/comments", t("comments.error"));
 
   return (
     <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black">
@@ -19,7 +21,9 @@ export default function CommentsPage() {
         </h1>
 
         {loading && (
-          <p className="text-zinc-600 dark:text-zinc-400">{t("comments.loading")}</p>
+          <p className="text-zinc-600 dark:text-zinc-400">
+            {t("comments.loading")}
+          </p>
         )}
 
         {error && (

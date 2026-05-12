@@ -78,8 +78,7 @@ export const translations: Record<Locale, Translations> = {
     "comments.error": "Error al cargar los comentarios",
     "comments.tryAgain": "Intentar de nuevo",
     "home.headline": "Para comenzar, edita el archivo page.tsx.",
-    "home.body":
-      "¿Buscas un punto de partida o más instrucciones? Ve a",
+    "home.body": "¿Buscas un punto de partida o más instrucciones? Ve a",
     "home.templates": "Plantillas",
     "home.learning": "Aprendizaje",
     "home.deployNow": "Desplegar ahora",

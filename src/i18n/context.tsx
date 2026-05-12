@@ -43,7 +43,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     (key: TranslationKey): string => {
       return translations[locale][key] ?? key;
     },
-    [locale]
+    [locale],
   );
 
   return (

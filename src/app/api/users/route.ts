@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
       users = users.filter(
         (user) =>
           user.name.toLowerCase().includes(term) ||
-          user.email.toLowerCase().includes(term)
+          user.email.toLowerCase().includes(term),
       );
     }
 
@@ -41,7 +41,12 @@ export async function GET(request: NextRequest) {
       const start = (page - 1) * limit;
       const data = users.slice(start, start + limit);
 
-      const paginated: PaginatedResponse<User> = { data, total, page, totalPages };
+      const paginated: PaginatedResponse<User> = {
+        data,
+        total,
+        page,
+        totalPages,
+      };
       return Response.json(paginated);
     }
 

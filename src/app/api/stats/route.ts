@@ -44,19 +44,27 @@ export async function GET() {
     id: post.id,
     title: post.title,
     body: post.body,
-    excerpt: post.body.length > 100 ? post.body.slice(0, 100) + "..." : post.body,
+    excerpt:
+      post.body.length > 100 ? post.body.slice(0, 100) + "..." : post.body,
   }));
 
   const recentPosts = [...posts].sort((a, b) => b.id - a.id).slice(0, 5);
 
-  const commenterMap = new Map<string, { name: string; email: string; count: number }>();
+  const commenterMap = new Map<
+    string,
+    { name: string; email: string; count: number }
+  >();
   for (const comment of externalComments) {
     const key = comment.email.toLowerCase();
     const existing = commenterMap.get(key);
     if (existing) {
       existing.count += 1;
     } else {
-      commenterMap.set(key, { name: comment.name, email: comment.email, count: 1 });
+      commenterMap.set(key, {
+        name: comment.name,
+        email: comment.email,
+        count: 1,
+      });
     }
   }
 

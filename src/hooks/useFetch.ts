@@ -9,7 +9,7 @@ export interface UseFetchResult<T> {
 
 export function useFetch<T>(
   url: string,
-  errorMessage?: string
+  errorMessage?: string,
 ): UseFetchResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
@@ -34,14 +34,12 @@ export function useFetch<T>(
           return res.json() as Promise<T>;
         })
         .then((result) => setData(result))
-        .catch((err) =>
-          setError(err instanceof Error ? err.message : fallback)
-        )
+        .catch((err) => setError(err instanceof Error ? err.message : fallback))
         .finally(() => setLoading(false));
     },
     // fetchCount triggers a re-run when refetch() is called
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [url, fetchCount]
+    [url, fetchCount],
   );
 
   return { data, loading, error, refetch };

@@ -16,7 +16,8 @@ export async function GET(request: NextRequest) {
       id: post.id,
       title: post.title,
       body: post.body,
-      excerpt: post.body.length > 100 ? post.body.slice(0, 100) + "..." : post.body,
+      excerpt:
+        post.body.length > 100 ? post.body.slice(0, 100) + "..." : post.body,
     }));
 
     const searchParams = request.nextUrl.searchParams;
@@ -29,7 +30,7 @@ export async function GET(request: NextRequest) {
       posts = posts.filter(
         (post) =>
           post.title.toLowerCase().includes(term) ||
-          post.body.toLowerCase().includes(term)
+          post.body.toLowerCase().includes(term),
       );
     }
 
@@ -41,7 +42,12 @@ export async function GET(request: NextRequest) {
       const start = (page - 1) * limit;
       const data = posts.slice(start, start + limit);
 
-      const paginated: PaginatedResponse<Post> = { data, total, page, totalPages };
+      const paginated: PaginatedResponse<Post> = {
+        data,
+        total,
+        page,
+        totalPages,
+      };
       return Response.json(paginated);
     }
 
