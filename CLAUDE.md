@@ -23,3 +23,8 @@ Next.js 16 app using the App Router with TypeScript, React 19, and Tailwind CSS 
 
 - Use functional components only — no class components
 - Next.js 16 may have breaking changes vs. training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing code involving Next.js APIs
+
+## Workflow
+
+- **Auto-commit and push**: When a task is completed, commit all related changes and push directly to `main` without asking. Do not wait for confirmation.
+- **Screenshot cleanup**: Any screenshot files (`.png`, `.jpg`, `.jpeg`) created during debugging or visual verification must be deleted before committing. Never commit screenshot files to the repo.
