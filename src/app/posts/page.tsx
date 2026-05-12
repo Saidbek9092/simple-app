@@ -1,34 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import type { Post } from "@/types/post";
 import { useTranslation } from "@/i18n/context";
+import { useFetch } from "@/hooks/useFetch";
 
 export default function PostsPage() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation();
-
-  function loadPosts() {
-    setError(null);
-    setLoading(true);
-    fetch("/api/posts")
-      .then((res) => {
-        if (!res.ok) throw new Error(t("posts.error"));
-        return res.json() as Promise<Post[]>;
-      })
-      .then((data) => setPosts(data))
-      .catch((err) =>
-        setError(err instanceof Error ? err.message : t("posts.error"))
-      )
-      .finally(() => setLoading(false));
-  }
-
-  useEffect(() => {
-    loadPosts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data: posts, loading, error, refetch } = useFetch<Post[]>(
+    "/api/posts",
+    t("posts.error")
+  );
 
   return (
     <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black">
@@ -45,7 +26,7 @@ export default function PostsPage() {
           <div className="rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-900 dark:bg-red-950">
             <p className="text-red-800 dark:text-red-200">{error}</p>
             <button
-              onClick={loadPosts}
+              onClick={refetch}
               className="mt-2 text-sm font-medium text-red-800 underline dark:text-red-200"
             >
               {t("posts.tryAgain")}
@@ -55,7 +36,7 @@ export default function PostsPage() {
 
         {!loading && !error && (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {posts.map((post) => (
+            {(posts ?? []).map((post) => (
               <article
                 key={post.id}
                 className="rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]"
