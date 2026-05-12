@@ -1,35 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import type { User } from "@/types/user";
 import { useTranslation } from "@/i18n/context";
+import { useFetch } from "@/hooks/useFetch";
 
 export default function UsersPage() {
-  const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation();
-
-  function loadUsers() {
-    setError(null);
-    setLoading(true);
-    fetch("/api/users")
-      .then((res) => {
-        if (!res.ok) throw new Error(t("users.error"));
-        return res.json() as Promise<User[]>;
-      })
-      .then((data) => setUsers(data))
-      .catch((err) =>
-        setError(err instanceof Error ? err.message : t("users.error"))
-      )
-      .finally(() => setLoading(false));
-  }
-
-  useEffect(() => {
-    loadUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data: users, loading, error, refetch } = useFetch<User[]>(
+    "/api/users",
+    t("users.error")
+  );
 
   return (
     <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black">
@@ -46,7 +27,7 @@ export default function UsersPage() {
           <div className="rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-900 dark:bg-red-950">
             <p className="text-red-800 dark:text-red-200">{error}</p>
             <button
-              onClick={loadUsers}
+              onClick={refetch}
               className="mt-2 text-sm font-medium text-red-800 underline dark:text-red-200"
             >
               {t("users.tryAgain")}
@@ -56,7 +37,7 @@ export default function UsersPage() {
 
         {!loading && !error && (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {users.map((user) => (
+            {(users ?? []).map((user) => (
               <article
                 key={user.id}
                 className="flex items-center gap-4 rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]"
