@@ -1,34 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import type { Comment } from "@/types/comment";
 import { useTranslation } from "@/i18n/context";
+import { useFetch } from "@/hooks/useFetch";
 
 export default function CommentsPage() {
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation();
-
-  function loadComments() {
-    setError(null);
-    setLoading(true);
-    fetch("/api/comments")
-      .then((res) => {
-        if (!res.ok) throw new Error(t("comments.error"));
-        return res.json() as Promise<Comment[]>;
-      })
-      .then((data) => setComments(data))
-      .catch((err) =>
-        setError(err instanceof Error ? err.message : t("comments.error"))
-      )
-      .finally(() => setLoading(false));
-  }
-
-  useEffect(() => {
-    loadComments();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data: comments, loading, error, refetch } = useFetch<Comment[]>(
+    "/api/comments",
+    t("comments.error")
+  );
 
   return (
     <div className="flex flex-col flex-1 items-center bg-zinc-50 font-sans dark:bg-black">
@@ -45,7 +26,7 @@ export default function CommentsPage() {
           <div className="rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-900 dark:bg-red-950">
             <p className="text-red-800 dark:text-red-200">{error}</p>
             <button
-              onClick={loadComments}
+              onClick={refetch}
               className="mt-2 text-sm font-medium text-red-800 underline dark:text-red-200"
             >
               {t("comments.tryAgain")}
@@ -55,7 +36,7 @@ export default function CommentsPage() {
 
         {!loading && !error && (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {comments.map((comment) => (
+            {(comments ?? []).map((comment) => (
               <article
                 key={comment.id}
                 className="rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]"
