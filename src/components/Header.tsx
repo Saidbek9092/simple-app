@@ -221,9 +221,7 @@ export default function Header() {
               aria-current={isActive(href) ? "page" : undefined}
               onClick={closeMenu}
               className={
-                isActive(href)
-                  ? mobileActiveLinkClass
-                  : mobileInactiveLinkClass
+                isActive(href) ? mobileActiveLinkClass : mobileInactiveLinkClass
               }
             >
               {t(labelKey)}

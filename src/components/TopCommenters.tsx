@@ -24,10 +24,7 @@ export default function TopCommenters({
       </h2>
       <ul className="flex flex-col divide-y divide-zinc-100 dark:divide-zinc-800">
         {commenters.map((commenter, index) => (
-          <li
-            key={commenter.email}
-            className="flex items-center gap-3 py-3"
-          >
+          <li key={commenter.email} className="flex items-center gap-3 py-3">
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-sm font-semibold text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
               {index + 1}
             </div>
