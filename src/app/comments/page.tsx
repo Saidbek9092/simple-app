@@ -72,7 +72,8 @@ function CommentsContent() {
   const total = data?.total ?? 0;
   const totalPages = data?.totalPages ?? 1;
 
-  const showingCount = comments.length;
+  const showingStart = total === 0 ? 0 : (currentPage - 1) * LIMIT + 1;
+  const showingEnd = Math.min(currentPage * LIMIT, total);
 
   return (
     <>
@@ -103,8 +104,8 @@ function CommentsContent() {
           {/* Page info */}
           {total > 0 && (
             <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-              {t("pagination.showing")} {showingCount} {t("pagination.of")}{" "}
-              {total}
+              {t("pagination.showing")} {showingStart}&ndash;{showingEnd}{" "}
+              {t("pagination.of")} {total}
             </p>
           )}
 

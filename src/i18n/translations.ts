@@ -38,7 +38,15 @@ export type TranslationKey =
   | "dashboard.comments"
   | "dashboard.loading"
   | "dashboard.error"
-  | "dashboard.viewAllPosts";
+  | "dashboard.viewAllPosts"
+  | "posts.searchPlaceholder"
+  | "posts.empty"
+  | "users.searchPlaceholder"
+  | "users.empty"
+  | "comments.searchPlaceholder"
+  | "comments.empty"
+  | "pagination.showing"
+  | "pagination.of";
 
 type Translations = Record<TranslationKey, string>;
 
@@ -83,6 +91,14 @@ export const translations: Record<Locale, Translations> = {
     "dashboard.loading": "Loading dashboard...",
     "dashboard.error": "Failed to load dashboard data",
     "dashboard.viewAllPosts": "View all posts",
+    "posts.searchPlaceholder": "Search posts…",
+    "posts.empty": "No posts found",
+    "users.searchPlaceholder": "Search users…",
+    "users.empty": "No users found",
+    "comments.searchPlaceholder": "Search comments…",
+    "comments.empty": "No comments found",
+    "pagination.showing": "Showing",
+    "pagination.of": "of",
   },
   es: {
     "nav.home": "Inicio",
@@ -123,5 +139,13 @@ export const translations: Record<Locale, Translations> = {
     "dashboard.loading": "Cargando panel...",
     "dashboard.error": "Error al cargar los datos del panel",
     "dashboard.viewAllPosts": "Ver todas las publicaciones",
+    "posts.searchPlaceholder": "Buscar publicaciones…",
+    "posts.empty": "No se encontraron publicaciones",
+    "users.searchPlaceholder": "Buscar usuarios…",
+    "users.empty": "No se encontraron usuarios",
+    "comments.searchPlaceholder": "Buscar comentarios…",
+    "comments.empty": "No se encontraron comentarios",
+    "pagination.showing": "Mostrando",
+    "pagination.of": "de",
   },
 };

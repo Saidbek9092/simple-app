@@ -537,9 +537,9 @@ Milestone 6 (Production Ready)
 | `feature/api-enhancements`           | 1          | Merged (PR #4) |
 | `feature/dashboard-homepage`         | 2          | Pending        |
 | `feature/header-navigation`          | 2          | Pending        |
-| `feature/posts-search-pagination`    | 3          | Pending        |
-| `feature/users-search-pagination`    | 3          | Pending        |
-| `feature/comments-search-pagination` | 3          | Pending        |
+| `feature/posts-search-pagination`    | 3          | Merged         |
+| `feature/users-search-pagination`    | 3          | Merged         |
+| `feature/comments-search-pagination` | 3          | Merged         |
 | `feature/post-detail-page`           | 4          | Pending        |
 | `feature/user-detail-page`           | 4          | Pending        |
 | `feature/animations-polish`          | 5          | Pending        |
