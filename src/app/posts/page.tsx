@@ -83,7 +83,10 @@ function PostsSearch() {
 
   return (
     <div className="flex flex-1 flex-col bg-zinc-50 dark:bg-black">
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+      <main
+        id="main-content"
+        className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 lg:px-8"
+      >
         {/* Header */}
         <div className="mb-6">
           <h1 className="text-3xl font-semibold tracking-tight text-black dark:text-zinc-50">
@@ -100,85 +103,87 @@ function PostsSearch() {
           />
         </div>
 
-        {/* Page info — only shown when data is available */}
-        {!loading && !error && total > 0 && (
-          <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-            {t("pagination.showing")} {showingStart}&ndash;{showingEnd}{" "}
-            {t("pagination.of")} {total}
-          </p>
-        )}
+        <div aria-live="polite">
+          {/* Page info — only shown when data is available */}
+          {!loading && !error && total > 0 && (
+            <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
+              {t("pagination.showing")} {showingStart}&ndash;{showingEnd}{" "}
+              {t("pagination.of")} {total}
+            </p>
+          )}
 
-        {/* Error state */}
-        {error && <ErrorBanner message={error} onRetry={refetch} />}
+          {/* Error state */}
+          {error && <ErrorBanner message={error} onRetry={refetch} />}
 
-        {/* Skeleton loading — 6 cards in a grid */}
-        {loading && (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <SkeletonCard key={i} variant="post" />
-            ))}
-          </div>
-        )}
+          {/* Skeleton loading — 6 cards in a grid */}
+          {loading && (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <SkeletonCard key={i} variant="post" />
+              ))}
+            </div>
+          )}
 
-        {/* Empty state */}
-        {!loading && !error && posts.length === 0 && (
-          <EmptyState
-            message={t("posts.empty")}
-            icon={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-10 w-10"
-                aria-hidden="true"
-              >
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-                <polyline points="10 9 9 9 8 9" />
-              </svg>
-            }
-          />
-        )}
-
-        {/* Posts grid */}
-        {!loading && !error && posts.length > 0 && (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post, index) => (
-              <Link
-                key={post.id}
-                href={`/posts/${post.id}`}
-                className="animate-fade-up"
-                style={{ "--i": index } as React.CSSProperties}
-              >
-                <article className="card-hover rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]">
-                  <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
-                    {post.title}
-                  </h2>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {post.excerpt}
-                  </p>
-                </article>
-              </Link>
-            ))}
-          </div>
-        )}
-
-        {/* Pagination */}
-        {!loading && !error && totalPages > 1 && (
-          <div className="mt-8">
-            <Pagination
-              page={page}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
+          {/* Empty state */}
+          {!loading && !error && posts.length === 0 && (
+            <EmptyState
+              message={t("posts.empty")}
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-10 w-10"
+                  aria-hidden="true"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+              }
             />
-          </div>
-        )}
+          )}
+
+          {/* Posts grid */}
+          {!loading && !error && posts.length > 0 && (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post, index) => (
+                <Link
+                  key={post.id}
+                  href={`/posts/${post.id}`}
+                  className="animate-fade-up"
+                  style={{ "--i": index } as React.CSSProperties}
+                >
+                  <article className="card-hover rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]">
+                    <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
+                      {post.title}
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                      {post.excerpt}
+                    </p>
+                  </article>
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {/* Pagination */}
+          {!loading && !error && totalPages > 1 && (
+            <div className="mt-8">
+              <Pagination
+                page={page}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
+            </div>
+          )}
+        </div>
       </main>
 
       <footer className="w-full py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">

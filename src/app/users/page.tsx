@@ -78,7 +78,10 @@ function UsersContent() {
   const showingEnd = Math.min(currentPage * LIMIT, total);
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+    <main
+      id="main-content"
+      className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 lg:px-8"
+    >
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-semibold tracking-tight text-black dark:text-zinc-50">
@@ -108,81 +111,83 @@ function UsersContent() {
       )}
 
       {/* Results */}
-      {!loading && !error && (
-        <>
-          {/* Page info */}
-          {total > 0 && (
-            <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-              {t("pagination.showing")} {showingStart}&ndash;{showingEnd}{" "}
-              {t("pagination.of")} {total}
-            </p>
-          )}
+      <div aria-live="polite">
+        {!loading && !error && (
+          <>
+            {/* Page info */}
+            {total > 0 && (
+              <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
+                {t("pagination.showing")} {showingStart}&ndash;{showingEnd}{" "}
+                {t("pagination.of")} {total}
+              </p>
+            )}
 
-          {/* Empty state */}
-          {users.length === 0 ? (
-            <EmptyState
-              message={t("users.empty")}
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-10 w-10"
-                  aria-hidden="true"
-                >
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                </svg>
-              }
-            />
-          ) : (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {users.map((user, index) => (
-                <Link
-                  key={user.id}
-                  href={`/users/${user.id}`}
-                  className="animate-fade-up"
-                  style={{ "--i": index } as React.CSSProperties}
-                >
-                  <article className="card-hover flex items-center gap-4 rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]">
-                    <Image
-                      src={user.avatar}
-                      alt={user.name}
-                      width={48}
-                      height={48}
-                      className="rounded-full"
-                      unoptimized
-                    />
-                    <div>
-                      <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
-                        {user.name}
-                      </h2>
-                      <p className="mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                        {user.email}
-                      </p>
-                    </div>
-                  </article>
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="mt-8">
-              <Pagination
-                page={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
+            {/* Empty state */}
+            {users.length === 0 ? (
+              <EmptyState
+                message={t("users.empty")}
+                icon={
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-10 w-10"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                  </svg>
+                }
               />
-            </div>
-          )}
-        </>
-      )}
+            ) : (
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {users.map((user, index) => (
+                  <Link
+                    key={user.id}
+                    href={`/users/${user.id}`}
+                    className="animate-fade-up"
+                    style={{ "--i": index } as React.CSSProperties}
+                  >
+                    <article className="card-hover flex items-center gap-4 rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]">
+                      <Image
+                        src={user.avatar}
+                        alt={user.name}
+                        width={48}
+                        height={48}
+                        className="rounded-full"
+                        unoptimized
+                      />
+                      <div>
+                        <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
+                          {user.name}
+                        </h2>
+                        <p className="mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                          {user.email}
+                        </p>
+                      </div>
+                    </article>
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="mt-8">
+                <Pagination
+                  page={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </main>
   );
 }

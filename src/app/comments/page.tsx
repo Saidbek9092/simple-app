@@ -86,86 +86,88 @@ function CommentsContent() {
         />
       </div>
 
-      {/* Error state */}
-      {error && <ErrorBanner message={error} onRetry={refetch} />}
+      <div aria-live="polite">
+        {/* Error state */}
+        {error && <ErrorBanner message={error} onRetry={refetch} />}
 
-      {/* Skeleton loading — 6 cards in the same grid as real content */}
-      {loading && !error && (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <SkeletonCard key={i} variant="comment" />
-          ))}
-        </div>
-      )}
+        {/* Skeleton loading — 6 cards in the same grid as real content */}
+        {loading && !error && (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <SkeletonCard key={i} variant="comment" />
+            ))}
+          </div>
+        )}
 
-      {/* Loaded content */}
-      {!loading && !error && (
-        <>
-          {/* Page info */}
-          {total > 0 && (
-            <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-              {t("pagination.showing")} {showingStart}&ndash;{showingEnd}{" "}
-              {t("pagination.of")} {total}
-            </p>
-          )}
+        {/* Loaded content */}
+        {!loading && !error && (
+          <>
+            {/* Page info */}
+            {total > 0 && (
+              <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
+                {t("pagination.showing")} {showingStart}&ndash;{showingEnd}{" "}
+                {t("pagination.of")} {total}
+              </p>
+            )}
 
-          {/* Empty state */}
-          {comments.length === 0 && (
-            <EmptyState
-              message={t("comments.empty")}
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-10 w-10"
-                  aria-hidden="true"
-                >
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>
-              }
-            />
-          )}
-
-          {/* Comment cards */}
-          {comments.length > 0 && (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {comments.map((comment, index) => (
-                <article
-                  key={comment.id}
-                  className="animate-fade-up card-hover rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]"
-                  style={{ "--i": index } as React.CSSProperties}
-                >
-                  <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
-                    {comment.author}
-                  </h2>
-                  <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
-                    {comment.email}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {comment.excerpt}
-                  </p>
-                </article>
-              ))}
-            </div>
-          )}
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="mt-8">
-              <Pagination
-                page={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
+            {/* Empty state */}
+            {comments.length === 0 && (
+              <EmptyState
+                message={t("comments.empty")}
+                icon={
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-10 w-10"
+                    aria-hidden="true"
+                  >
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                }
               />
-            </div>
-          )}
-        </>
-      )}
+            )}
+
+            {/* Comment cards */}
+            {comments.length > 0 && (
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {comments.map((comment, index) => (
+                  <article
+                    key={comment.id}
+                    className="animate-fade-up card-hover rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]"
+                    style={{ "--i": index } as React.CSSProperties}
+                  >
+                    <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
+                      {comment.author}
+                    </h2>
+                    <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
+                      {comment.email}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                      {comment.excerpt}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            )}
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="mt-8">
+                <Pagination
+                  page={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </>
   );
 }
@@ -186,7 +188,10 @@ export default function CommentsPage() {
 
   return (
     <div className="flex flex-1 flex-col bg-zinc-50 dark:bg-black">
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+      <main
+        id="main-content"
+        className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 lg:px-8"
+      >
         {/* Page header */}
         <div className="mb-8">
           <h1 className="text-3xl font-semibold tracking-tight text-black dark:text-zinc-50">

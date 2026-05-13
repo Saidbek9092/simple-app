@@ -130,7 +130,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-1 flex-col bg-zinc-50 dark:bg-black">
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+      <main
+        id="main-content"
+        className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 lg:px-8"
+      >
         <div className="mb-8">
           <PageHeader title={t("dashboard.title")} />
         </div>
