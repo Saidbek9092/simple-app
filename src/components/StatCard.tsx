@@ -51,7 +51,7 @@ export default function StatCard({
 
   return (
     <div
-      className={`rounded-xl border border-black/[.08] bg-white p-6 shadow-sm transition-all duration-500 dark:border-white/[.145] dark:bg-zinc-900 ${
+      className={`card-hover rounded-xl border border-black/[.08] bg-white p-6 shadow-sm transition-all duration-500 dark:border-white/[.145] dark:bg-zinc-900 ${
         isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
       }`}
     >

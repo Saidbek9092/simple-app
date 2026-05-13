@@ -11,7 +11,7 @@ export default function SkeletonCard({ variant }: SkeletonCardProps) {
     return (
       <div
         aria-hidden="true"
-        className="flex items-center gap-4 rounded-lg border border-black/[.08] p-5 animate-pulse dark:border-white/[.145]"
+        className="flex items-center gap-4 rounded-lg border border-black/[.08] p-5 animate-pulse animate-shimmer dark:border-white/[.145]"
       >
         {/* Avatar circle */}
         <div className="h-12 w-12 shrink-0 rounded-full bg-zinc-200 dark:bg-zinc-700" />
@@ -29,7 +29,7 @@ export default function SkeletonCard({ variant }: SkeletonCardProps) {
     return (
       <div
         aria-hidden="true"
-        className="rounded-lg border border-black/[.08] p-5 animate-pulse dark:border-white/[.145]"
+        className="rounded-lg border border-black/[.08] p-5 animate-pulse animate-shimmer dark:border-white/[.145]"
       >
         {/* Author + email row */}
         <div className="flex items-center gap-3 mb-3">
@@ -50,7 +50,7 @@ export default function SkeletonCard({ variant }: SkeletonCardProps) {
   return (
     <div
       aria-hidden="true"
-      className="rounded-lg border border-black/[.08] p-5 animate-pulse dark:border-white/[.145]"
+      className="rounded-lg border border-black/[.08] p-5 animate-pulse animate-shimmer dark:border-white/[.145]"
     >
       {/* Title lines */}
       <div className="flex flex-col gap-2 mb-3">

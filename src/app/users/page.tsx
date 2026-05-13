@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import type { User } from "@/types/user";
 import type { PaginatedResponse } from "@/types/api";
@@ -140,28 +141,32 @@ function UsersContent() {
             />
           ) : (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {users.map((user) => (
-                <article
+              {users.map((user, index) => (
+                <Link
                   key={user.id}
-                  className="flex items-center gap-4 rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]"
+                  href={`/users/${user.id}`}
+                  className="animate-fade-up"
+                  style={{ "--i": index } as React.CSSProperties}
                 >
-                  <Image
-                    src={user.avatar}
-                    alt={user.name}
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                    unoptimized
-                  />
-                  <div>
-                    <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
-                      {user.name}
-                    </h2>
-                    <p className="mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                      {user.email}
-                    </p>
-                  </div>
-                </article>
+                  <article className="card-hover flex items-center gap-4 rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]">
+                    <Image
+                      src={user.avatar}
+                      alt={user.name}
+                      width={48}
+                      height={48}
+                      className="rounded-full"
+                      unoptimized
+                    />
+                    <div>
+                      <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
+                        {user.name}
+                      </h2>
+                      <p className="mt-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {user.email}
+                      </p>
+                    </div>
+                  </article>
+                </Link>
               ))}
             </div>
           )}

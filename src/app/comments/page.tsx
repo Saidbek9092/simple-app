@@ -134,10 +134,11 @@ function CommentsContent() {
           {/* Comment cards */}
           {comments.length > 0 && (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {comments.map((comment) => (
+              {comments.map((comment, index) => (
                 <article
                   key={comment.id}
-                  className="rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]"
+                  className="animate-fade-up card-hover rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]"
+                  style={{ "--i": index } as React.CSSProperties}
                 >
                   <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
                     {comment.author}

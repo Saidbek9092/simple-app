@@ -2,6 +2,7 @@
 
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import type { Post } from "@/types/post";
 import type { PaginatedResponse } from "@/types/api";
 import { useTranslation } from "@/i18n/context";
@@ -148,18 +149,22 @@ function PostsSearch() {
         {/* Posts grid */}
         {!loading && !error && posts.length > 0 && (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
-              <article
+            {posts.map((post, index) => (
+              <Link
                 key={post.id}
-                className="rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]"
+                href={`/posts/${post.id}`}
+                className="animate-fade-up"
+                style={{ "--i": index } as React.CSSProperties}
               >
-                <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
-                  {post.title}
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  {post.excerpt}
-                </p>
-              </article>
+                <article className="card-hover rounded-lg border border-black/[.08] p-5 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]">
+                  <h2 className="text-lg font-medium leading-snug text-black dark:text-zinc-50">
+                    {post.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    {post.excerpt}
+                  </p>
+                </article>
+              </Link>
             ))}
           </div>
         )}
