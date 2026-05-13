@@ -10,6 +10,7 @@ export type TranslationKey =
   | "nav.anime"
   | "nav.menu"
   | "nav.close"
+  | "error.tryAgain"
   | "posts.title"
   | "posts.loading"
   | "posts.error"
@@ -109,6 +110,7 @@ export const translations: Record<Locale, Translations> = {
     "nav.anime": "Anime",
     "nav.menu": "Open navigation menu",
     "nav.close": "Close navigation menu",
+    "error.tryAgain": "Try again",
     "posts.title": "Posts",
     "posts.loading": "Loading posts...",
     "posts.error": "Failed to fetch posts",
@@ -206,6 +208,7 @@ export const translations: Record<Locale, Translations> = {
     "nav.anime": "Anime",
     "nav.menu": "Abrir menú de navegación",
     "nav.close": "Cerrar menú de navegación",
+    "error.tryAgain": "Intentar de nuevo",
     "posts.title": "Publicaciones",
     "posts.loading": "Cargando publicaciones...",
     "posts.error": "Error al cargar las publicaciones",

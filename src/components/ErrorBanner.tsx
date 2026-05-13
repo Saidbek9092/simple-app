@@ -1,11 +1,15 @@
 "use client";
 
+import { useTranslation } from "@/i18n/context";
+
 interface ErrorBannerProps {
   message: string;
   onRetry?: () => void;
 }
 
 export default function ErrorBanner({ message, onRetry }: ErrorBannerProps) {
+  const { t } = useTranslation();
+
   return (
     <div
       role="alert"
@@ -17,7 +21,7 @@ export default function ErrorBanner({ message, onRetry }: ErrorBannerProps) {
           onClick={onRetry}
           className="mt-2 text-sm font-medium text-red-800 underline hover:text-red-900 dark:text-red-200 dark:hover:text-red-100"
         >
-          Try again
+          {t("error.tryAgain")}
         </button>
       )}
     </div>
