@@ -4,6 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useSyncExternalStore,
 } from "react";
 import { translations, type Locale, type TranslationKey } from "./translations";
@@ -47,6 +48,10 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     getClientLocale,
     getServerLocale,
   );
+
+  useEffect(() => {
+    document.documentElement.setAttribute("lang", locale);
+  }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {
     localStorage.setItem(STORAGE_KEY, next);

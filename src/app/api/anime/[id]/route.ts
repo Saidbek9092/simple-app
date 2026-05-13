@@ -26,7 +26,9 @@ export async function GET(
       title: a.title_english ?? a.title,
       titleEnglish: a.title_english,
       imageUrl: a.images.jpg.large_image_url,
-      synopsis: a.synopsis,
+      synopsis: a.synopsis
+        ? a.synopsis.replace(/\s*\[Written by MAL Rewrite\]/g, "").trim()
+        : null,
       score: a.score,
       episodes: a.episodes,
       status: a.status,

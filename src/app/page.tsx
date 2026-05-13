@@ -88,7 +88,7 @@ function CommentsIcon() {
 function DashboardSkeleton() {
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {Array.from({ length: 3 }).map((_, i) => (
           <div
             key={i}
@@ -149,7 +149,7 @@ export default function Home() {
             <DashboardSkeleton />
           ) : data ? (
             <>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <StatCard
                   label={t("dashboard.totalPosts")}
                   value={data.totalPosts}
@@ -178,6 +178,7 @@ export default function Home() {
                 <TopCommenters
                   title={t("dashboard.topCommenters")}
                   commenters={data.topCommenters}
+                  commentLabel={t("dashboard.comment")}
                   commentsLabel={t("dashboard.comments")}
                 />
               </div>

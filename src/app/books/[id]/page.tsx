@@ -74,7 +74,7 @@ export default function BookDetailPage({
         )}
 
         {!loading && !error && book && (
-          <div className="flex flex-col gap-8 md:flex-row">
+          <div className="flex min-h-[50vh] flex-col gap-8 md:flex-row">
             {book.coverUrl && (
               <div className="shrink-0">
                 <Image

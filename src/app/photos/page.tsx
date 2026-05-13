@@ -8,32 +8,47 @@ import type { Photo } from "@/types/photo";
 import type { PaginatedResponse } from "@/types/api";
 import { useTranslation } from "@/i18n/context";
 import { useFetch } from "@/hooks/useFetch";
+import SearchInput from "@/components/SearchInput";
 import Pagination from "@/components/Pagination";
 import SkeletonCard from "@/components/SkeletonCard";
 import ErrorBanner from "@/components/ErrorBanner";
 import EmptyState from "@/components/EmptyState";
 
 const LIMIT = 12;
+const DEBOUNCE_MS = 300;
 
 function PhotosGallery() {
   const { t } = useTranslation();
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const initialSearch = searchParams.get("search") ?? "";
   const initialPage = Math.max(1, Number(searchParams.get("page") ?? "1"));
+
+  const [inputValue, setInputValue] = useState(initialSearch);
+  const [debouncedSearch, setDebouncedSearch] = useState(initialSearch);
   const [page, setPage] = useState(initialPage);
   const pathnameRef = useRef("/photos");
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(inputValue);
+      setPage(1);
+    }, DEBOUNCE_MS);
+    return () => clearTimeout(timer);
+  }, [inputValue]);
+
+  useEffect(() => {
     const params = new URLSearchParams();
+    if (debouncedSearch) params.set("search", debouncedSearch);
     if (page > 1) params.set("page", String(page));
     const qs = params.toString();
     router.replace(pathnameRef.current + (qs ? `?${qs}` : ""), {
       scroll: false,
     });
-  }, [page, router]);
+  }, [debouncedSearch, page, router]);
 
-  const apiUrl = `/api/photos?page=${page}&limit=${LIMIT}`;
+  const apiUrl = `/api/photos?page=${page}&limit=${LIMIT}${debouncedSearch ? `&search=${encodeURIComponent(debouncedSearch)}` : ""}`;
 
   const {
     data: response,
@@ -64,6 +79,14 @@ function PhotosGallery() {
           <h1 className="text-3xl font-semibold tracking-tight text-black dark:text-zinc-50">
             {t("photos.title")}
           </h1>
+        </div>
+
+        <div className="mb-6 max-w-sm">
+          <SearchInput
+            value={inputValue}
+            onChange={setInputValue}
+            placeholder={t("photos.searchPlaceholder")}
+          />
         </div>
 
         <div aria-live="polite">

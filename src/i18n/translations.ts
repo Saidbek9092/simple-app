@@ -39,6 +39,7 @@ export type TranslationKey =
   | "dashboard.totalComments"
   | "dashboard.recentPosts"
   | "dashboard.topCommenters"
+  | "dashboard.comment"
   | "dashboard.comments"
   | "dashboard.loading"
   | "dashboard.error"
@@ -75,6 +76,7 @@ export type TranslationKey =
   | "bookDetail.subjects"
   | "bookDetail.editions"
   | "photos.title"
+  | "photos.searchPlaceholder"
   | "photos.error"
   | "photos.empty"
   | "photoDetail.back"
@@ -140,6 +142,7 @@ export const translations: Record<Locale, Translations> = {
     "dashboard.totalComments": "Total Comments",
     "dashboard.recentPosts": "Recent Posts",
     "dashboard.topCommenters": "Top Commenters",
+    "dashboard.comment": "comment",
     "dashboard.comments": "comments",
     "dashboard.loading": "Loading dashboard...",
     "dashboard.error": "Failed to load dashboard data",
@@ -176,6 +179,7 @@ export const translations: Record<Locale, Translations> = {
     "bookDetail.subjects": "Subjects",
     "bookDetail.editions": "editions",
     "photos.title": "Photos",
+    "photos.searchPlaceholder": "Search photos…",
     "photos.error": "Failed to fetch photos",
     "photos.empty": "No photos found",
     "photoDetail.back": "Back to photos",
@@ -237,6 +241,7 @@ export const translations: Record<Locale, Translations> = {
     "dashboard.totalComments": "Total de comentarios",
     "dashboard.recentPosts": "Publicaciones recientes",
     "dashboard.topCommenters": "Principales comentaristas",
+    "dashboard.comment": "comentario",
     "dashboard.comments": "comentarios",
     "dashboard.loading": "Cargando panel...",
     "dashboard.error": "Error al cargar los datos del panel",
@@ -273,6 +278,7 @@ export const translations: Record<Locale, Translations> = {
     "bookDetail.subjects": "Temas",
     "bookDetail.editions": "ediciones",
     "photos.title": "Fotos",
+    "photos.searchPlaceholder": "Buscar fotos…",
     "photos.error": "Error al cargar las fotos",
     "photos.empty": "No se encontraron fotos",
     "photoDetail.back": "Volver a fotos",

@@ -9,12 +9,14 @@ interface TopCommenter {
 interface TopCommentersProps {
   title: string;
   commenters: TopCommenter[];
+  commentLabel: string;
   commentsLabel: string;
 }
 
 export default function TopCommenters({
   title,
   commenters,
+  commentLabel,
   commentsLabel,
 }: TopCommentersProps) {
   return (
@@ -37,7 +39,8 @@ export default function TopCommenters({
               </p>
             </div>
             <span className="shrink-0 rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-              {commenter.count} {commentsLabel}
+              {commenter.count}{" "}
+              {commenter.count === 1 ? commentLabel : commentsLabel}
             </span>
           </li>
         ))}
