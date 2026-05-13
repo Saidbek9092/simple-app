@@ -1,6 +1,12 @@
 "use client";
 
-export type SkeletonCardVariant = "post" | "user" | "comment";
+export type SkeletonCardVariant =
+  | "post"
+  | "user"
+  | "comment"
+  | "book"
+  | "photo"
+  | "anime";
 
 interface SkeletonCardProps {
   variant: SkeletonCardVariant;
@@ -41,6 +47,51 @@ export default function SkeletonCard({ variant }: SkeletonCardProps) {
           <div className="h-3 w-full rounded bg-zinc-200 dark:bg-zinc-700" />
           <div className="h-3 w-full rounded bg-zinc-200 dark:bg-zinc-700" />
           <div className="h-3 w-4/5 rounded bg-zinc-200 dark:bg-zinc-700" />
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "book") {
+    return (
+      <div
+        aria-hidden="true"
+        className="flex gap-4 rounded-lg border border-black/[.08] p-5 animate-pulse animate-shimmer dark:border-white/[.145]"
+      >
+        <div className="h-28 w-20 shrink-0 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="flex flex-1 flex-col gap-2">
+          <div className="h-5 w-4/5 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div className="h-3 w-2/5 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div className="h-3 w-1/4 rounded bg-zinc-200 dark:bg-zinc-700" />
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "photo") {
+    return (
+      <div
+        aria-hidden="true"
+        className="overflow-hidden rounded-lg border border-black/[.08] animate-pulse animate-shimmer dark:border-white/[.145]"
+      >
+        <div className="aspect-[4/3] w-full bg-zinc-200 dark:bg-zinc-700" />
+        <div className="p-3">
+          <div className="h-3 w-1/3 rounded bg-zinc-200 dark:bg-zinc-700" />
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "anime") {
+    return (
+      <div
+        aria-hidden="true"
+        className="overflow-hidden rounded-lg border border-black/[.08] animate-pulse animate-shimmer dark:border-white/[.145]"
+      >
+        <div className="aspect-[3/4] w-full bg-zinc-200 dark:bg-zinc-700" />
+        <div className="p-4 flex flex-col gap-2">
+          <div className="h-4 w-4/5 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div className="h-3 w-2/5 rounded bg-zinc-200 dark:bg-zinc-700" />
         </div>
       </div>
     );
