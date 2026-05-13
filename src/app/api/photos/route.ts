@@ -34,12 +34,19 @@ export async function GET(request: NextRequest) {
       unsplashUrl: p.url,
     }));
 
-    // Picsum has ~1000 photos total, no total count header
+    // Picsum doesn't provide a total count header. If we received fewer
+    // items than requested, we've reached the end — compute real total.
+    const isLastPage = externalPhotos.length < limit;
+    const total = isLastPage
+      ? (page - 1) * limit + externalPhotos.length
+      : page * limit + 1; // ensure there's at least one more page
+    const totalPages = isLastPage ? page : page + 1;
+
     const paginated: PaginatedResponse<Photo> = {
       data: photos,
-      total: 1000,
+      total,
       page,
-      totalPages: Math.ceil(1000 / limit),
+      totalPages,
     };
 
     return Response.json(paginated);

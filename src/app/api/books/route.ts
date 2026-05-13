@@ -39,11 +39,17 @@ export async function GET(request: NextRequest) {
       editionCount: doc.edition_count ?? 0,
     }));
 
+    // Cap total pages to keep pagination UX practical
+    const MAX_PAGES = 100;
+    const rawTotalPages = Math.ceil(total / limit);
+    const totalPages = Math.min(rawTotalPages, MAX_PAGES);
+    const cappedTotal = Math.min(total, totalPages * limit);
+
     const paginated: PaginatedResponse<Book> = {
       data: books,
-      total,
+      total: cappedTotal,
       page,
-      totalPages: Math.ceil(total / limit),
+      totalPages,
     };
 
     return Response.json(paginated);
