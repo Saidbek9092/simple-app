@@ -31,7 +31,7 @@ export default function RecentPosts({
         {posts.map((post) => (
           <li key={post.id}>
             <Link
-              href="/posts"
+              href={`/posts/${post.id}`}
               className="block py-3 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50 -mx-2 px-2 rounded-md"
             >
               <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 line-clamp-1">

@@ -46,7 +46,19 @@ export type TranslationKey =
   | "comments.searchPlaceholder"
   | "comments.empty"
   | "pagination.showing"
-  | "pagination.of";
+  | "pagination.of"
+  | "postDetail.comments"
+  | "postDetail.noComments"
+  | "postDetail.back"
+  | "postDetail.loading"
+  | "postDetail.error"
+  | "postDetail.notFound"
+  | "userDetail.posts"
+  | "userDetail.noPosts"
+  | "userDetail.back"
+  | "userDetail.loading"
+  | "userDetail.error"
+  | "userDetail.notFound";
 
 type Translations = Record<TranslationKey, string>;
 
@@ -99,6 +111,18 @@ export const translations: Record<Locale, Translations> = {
     "comments.empty": "No comments found",
     "pagination.showing": "Showing",
     "pagination.of": "of",
+    "postDetail.comments": "Comments",
+    "postDetail.noComments": "No comments yet",
+    "postDetail.back": "Back to posts",
+    "postDetail.loading": "Loading post...",
+    "postDetail.error": "Failed to load post",
+    "postDetail.notFound": "Post not found",
+    "userDetail.posts": "Posts",
+    "userDetail.noPosts": "No posts yet",
+    "userDetail.back": "Back to users",
+    "userDetail.loading": "Loading user...",
+    "userDetail.error": "Failed to load user",
+    "userDetail.notFound": "User not found",
   },
   es: {
     "nav.home": "Inicio",
@@ -147,5 +171,17 @@ export const translations: Record<Locale, Translations> = {
     "comments.empty": "No se encontraron comentarios",
     "pagination.showing": "Mostrando",
     "pagination.of": "de",
+    "postDetail.comments": "Comentarios",
+    "postDetail.noComments": "Sin comentarios aún",
+    "postDetail.back": "Volver a publicaciones",
+    "postDetail.loading": "Cargando publicación...",
+    "postDetail.error": "Error al cargar la publicación",
+    "postDetail.notFound": "Publicación no encontrada",
+    "userDetail.posts": "Publicaciones",
+    "userDetail.noPosts": "Sin publicaciones aún",
+    "userDetail.back": "Volver a usuarios",
+    "userDetail.loading": "Cargando usuario...",
+    "userDetail.error": "Error al cargar el usuario",
+    "userDetail.notFound": "Usuario no encontrado",
   },
 };

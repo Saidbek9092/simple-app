@@ -117,7 +117,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/[.08] bg-white/90 backdrop-blur dark:border-white/[.08] dark:bg-black/90">
-      <div className="mx-auto flex h-14 max-w-3xl items-center justify-between px-6">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Desktop navigation links */}
         <nav
           className="hidden sm:flex items-center gap-1"
@@ -212,7 +212,7 @@ export default function Header() {
       >
         <nav
           aria-label="Mobile navigation"
-          className="flex flex-col gap-1 px-6 pb-4 pt-1 border-t border-black/[.06] dark:border-white/[.06]"
+          className="flex flex-col gap-1 px-4 pb-4 pt-1 sm:px-6 lg:px-8 border-t border-black/[.06] dark:border-white/[.06]"
         >
           {NAV_LINKS.map(({ href, labelKey }) => (
             <Link

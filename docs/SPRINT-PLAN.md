@@ -540,9 +540,9 @@ Milestone 6 (Production Ready)
 | `feature/posts-search-pagination`    | 3          | Merged         |
 | `feature/users-search-pagination`    | 3          | Merged         |
 | `feature/comments-search-pagination` | 3          | Merged         |
-| `feature/post-detail-page`           | 4          | Pending        |
-| `feature/user-detail-page`           | 4          | Pending        |
-| `feature/animations-polish`          | 5          | Pending        |
-| `feature/visual-consistency`         | 5          | Pending        |
-| `feature/accessibility-hardening`    | 6          | Pending        |
-| `feature/responsive-hardening`       | 6          | Pending        |
+| `feature/post-detail-page`           | 4          | Merged         |
+| `feature/user-detail-page`           | 4          | Merged         |
+| `feature/animations-polish`          | 5          | Merged         |
+| `feature/visual-consistency`         | 5          | Merged         |
+| `feature/accessibility-hardening`    | 6          | Merged         |
+| `feature/responsive-hardening`       | 6          | Merged         |
