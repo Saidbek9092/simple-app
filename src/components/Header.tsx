@@ -9,7 +9,14 @@ import ThemeToggle from "./ThemeToggle";
 
 type NavLink = {
   href: string;
-  labelKey: "nav.home" | "nav.posts" | "nav.users" | "nav.comments";
+  labelKey:
+    | "nav.home"
+    | "nav.posts"
+    | "nav.users"
+    | "nav.comments"
+    | "nav.books"
+    | "nav.photos"
+    | "nav.anime";
 };
 
 const NAV_LINKS: NavLink[] = [
@@ -17,6 +24,9 @@ const NAV_LINKS: NavLink[] = [
   { href: "/posts", labelKey: "nav.posts" },
   { href: "/users", labelKey: "nav.users" },
   { href: "/comments", labelKey: "nav.comments" },
+  { href: "/books", labelKey: "nav.books" },
+  { href: "/photos", labelKey: "nav.photos" },
+  { href: "/anime", labelKey: "nav.anime" },
 ];
 
 export default function Header() {
@@ -206,7 +216,7 @@ export default function Header() {
         className={
           "sm:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out " +
           (menuOpen
-            ? "max-h-64 opacity-100"
+            ? "max-h-96 opacity-100"
             : "max-h-0 opacity-0 pointer-events-none")
         }
       >
