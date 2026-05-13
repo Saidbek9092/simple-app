@@ -5,6 +5,9 @@ export type TranslationKey =
   | "nav.posts"
   | "nav.users"
   | "nav.comments"
+  | "nav.books"
+  | "nav.photos"
+  | "nav.anime"
   | "nav.menu"
   | "nav.close"
   | "posts.title"
@@ -58,7 +61,40 @@ export type TranslationKey =
   | "userDetail.back"
   | "userDetail.loading"
   | "userDetail.error"
-  | "userDetail.notFound";
+  | "userDetail.notFound"
+  | "books.title"
+  | "books.searchPlaceholder"
+  | "books.error"
+  | "books.empty"
+  | "bookDetail.back"
+  | "bookDetail.error"
+  | "bookDetail.notFound"
+  | "bookDetail.by"
+  | "bookDetail.firstPublished"
+  | "bookDetail.subjects"
+  | "bookDetail.editions"
+  | "photos.title"
+  | "photos.error"
+  | "photos.empty"
+  | "photoDetail.back"
+  | "photoDetail.error"
+  | "photoDetail.notFound"
+  | "photoDetail.by"
+  | "photoDetail.dimensions"
+  | "photoDetail.viewOriginal"
+  | "anime.title"
+  | "anime.searchPlaceholder"
+  | "anime.error"
+  | "anime.empty"
+  | "animeDetail.back"
+  | "animeDetail.error"
+  | "animeDetail.notFound"
+  | "animeDetail.episodes"
+  | "animeDetail.score"
+  | "animeDetail.status"
+  | "animeDetail.type"
+  | "animeDetail.genres"
+  | "animeDetail.synopsis";
 
 type Translations = Record<TranslationKey, string>;
 
@@ -68,6 +104,9 @@ export const translations: Record<Locale, Translations> = {
     "nav.posts": "Posts",
     "nav.users": "Users",
     "nav.comments": "Comments",
+    "nav.books": "Books",
+    "nav.photos": "Photos",
+    "nav.anime": "Anime",
     "nav.menu": "Open navigation menu",
     "nav.close": "Close navigation menu",
     "posts.title": "Posts",
@@ -123,12 +162,48 @@ export const translations: Record<Locale, Translations> = {
     "userDetail.loading": "Loading user...",
     "userDetail.error": "Failed to load user",
     "userDetail.notFound": "User not found",
+    "books.title": "Books",
+    "books.searchPlaceholder": "Search books…",
+    "books.error": "Failed to fetch books",
+    "books.empty": "No books found",
+    "bookDetail.back": "Back to books",
+    "bookDetail.error": "Failed to load book",
+    "bookDetail.notFound": "Book not found",
+    "bookDetail.by": "by",
+    "bookDetail.firstPublished": "First published",
+    "bookDetail.subjects": "Subjects",
+    "bookDetail.editions": "editions",
+    "photos.title": "Photos",
+    "photos.error": "Failed to fetch photos",
+    "photos.empty": "No photos found",
+    "photoDetail.back": "Back to photos",
+    "photoDetail.error": "Failed to load photo",
+    "photoDetail.notFound": "Photo not found",
+    "photoDetail.by": "by",
+    "photoDetail.dimensions": "Dimensions",
+    "photoDetail.viewOriginal": "View original",
+    "anime.title": "Anime",
+    "anime.searchPlaceholder": "Search anime…",
+    "anime.error": "Failed to fetch anime",
+    "anime.empty": "No anime found",
+    "animeDetail.back": "Back to anime",
+    "animeDetail.error": "Failed to load anime",
+    "animeDetail.notFound": "Anime not found",
+    "animeDetail.episodes": "Episodes",
+    "animeDetail.score": "Score",
+    "animeDetail.status": "Status",
+    "animeDetail.type": "Type",
+    "animeDetail.genres": "Genres",
+    "animeDetail.synopsis": "Synopsis",
   },
   es: {
     "nav.home": "Inicio",
     "nav.posts": "Publicaciones",
     "nav.users": "Usuarios",
     "nav.comments": "Comentarios",
+    "nav.books": "Libros",
+    "nav.photos": "Fotos",
+    "nav.anime": "Anime",
     "nav.menu": "Abrir menú de navegación",
     "nav.close": "Cerrar menú de navegación",
     "posts.title": "Publicaciones",
@@ -183,5 +258,38 @@ export const translations: Record<Locale, Translations> = {
     "userDetail.loading": "Cargando usuario...",
     "userDetail.error": "Error al cargar el usuario",
     "userDetail.notFound": "Usuario no encontrado",
+    "books.title": "Libros",
+    "books.searchPlaceholder": "Buscar libros…",
+    "books.error": "Error al cargar los libros",
+    "books.empty": "No se encontraron libros",
+    "bookDetail.back": "Volver a libros",
+    "bookDetail.error": "Error al cargar el libro",
+    "bookDetail.notFound": "Libro no encontrado",
+    "bookDetail.by": "por",
+    "bookDetail.firstPublished": "Primera publicación",
+    "bookDetail.subjects": "Temas",
+    "bookDetail.editions": "ediciones",
+    "photos.title": "Fotos",
+    "photos.error": "Error al cargar las fotos",
+    "photos.empty": "No se encontraron fotos",
+    "photoDetail.back": "Volver a fotos",
+    "photoDetail.error": "Error al cargar la foto",
+    "photoDetail.notFound": "Foto no encontrada",
+    "photoDetail.by": "por",
+    "photoDetail.dimensions": "Dimensiones",
+    "photoDetail.viewOriginal": "Ver original",
+    "anime.title": "Anime",
+    "anime.searchPlaceholder": "Buscar anime…",
+    "anime.error": "Error al cargar el anime",
+    "anime.empty": "No se encontró anime",
+    "animeDetail.back": "Volver a anime",
+    "animeDetail.error": "Error al cargar el anime",
+    "animeDetail.notFound": "Anime no encontrado",
+    "animeDetail.episodes": "Episodios",
+    "animeDetail.score": "Puntuación",
+    "animeDetail.status": "Estado",
+    "animeDetail.type": "Tipo",
+    "animeDetail.genres": "Géneros",
+    "animeDetail.synopsis": "Sinopsis",
   },
 };
