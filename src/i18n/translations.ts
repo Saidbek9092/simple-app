@@ -98,6 +98,7 @@ export type TranslationKey =
   | "animeDetail.type"
   | "animeDetail.genres"
   | "animeDetail.synopsis"
+  | "common.opensInNewTab"
   | "nav.contact"
   | "contact.title"
   | "contact.subtitle"
@@ -215,6 +216,7 @@ export const translations: Record<Locale, Translations> = {
     "animeDetail.type": "Type",
     "animeDetail.genres": "Genres",
     "animeDetail.synopsis": "Synopsis",
+    "common.opensInNewTab": "opens in new tab",
     "nav.contact": "Contact",
     "contact.title": "Contact Us",
     "contact.subtitle": "Have a question or feedback? We'd love to hear from you.",
@@ -328,6 +330,7 @@ export const translations: Record<Locale, Translations> = {
     "animeDetail.type": "Tipo",
     "animeDetail.genres": "Géneros",
     "animeDetail.synopsis": "Sinopsis",
+    "common.opensInNewTab": "se abre en una pestaña nueva",
     "nav.contact": "Contacto",
     "contact.title": "Contáctanos",
     "contact.subtitle": "¿Tienes una pregunta o comentario? Nos encantaría escucharte.",
