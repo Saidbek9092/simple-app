@@ -138,7 +138,7 @@ export default function BookDetailPage({
       </main>
 
       <footer className="w-full py-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
-        &copy; 2026 Simple App
+        &copy; 2026 DataHub
       </footer>
     </div>
   );

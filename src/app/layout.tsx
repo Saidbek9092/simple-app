@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Simple App",
-  description: "A simple Next.js app",
+  title: "DataHub",
+  description: "A data exploration hub for posts, users, books, photos, and anime",
 };
 
 export default function RootLayout({
