@@ -97,7 +97,8 @@ export type TranslationKey =
   | "animeDetail.status"
   | "animeDetail.type"
   | "animeDetail.genres"
-  | "animeDetail.synopsis";
+  | "animeDetail.synopsis"
+  | "common.opensInNewTab";
 
 type Translations = Record<TranslationKey, string>;
 
@@ -201,6 +202,7 @@ export const translations: Record<Locale, Translations> = {
     "animeDetail.type": "Type",
     "animeDetail.genres": "Genres",
     "animeDetail.synopsis": "Synopsis",
+    "common.opensInNewTab": "opens in new tab",
   },
   es: {
     "nav.home": "Inicio",
@@ -300,5 +302,6 @@ export const translations: Record<Locale, Translations> = {
     "animeDetail.type": "Tipo",
     "animeDetail.genres": "Géneros",
     "animeDetail.synopsis": "Sinopsis",
+    "common.opensInNewTab": "se abre en una pestaña nueva",
   },
 };

@@ -98,6 +98,7 @@ export default function PhotoDetailPage({
                 className="inline-flex items-center gap-1 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
               >
                 {t("photoDetail.viewOriginal")}
+                <span className="sr-only">({t("common.opensInNewTab")})</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
