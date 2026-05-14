@@ -16,7 +16,8 @@ type NavLink = {
     | "nav.comments"
     | "nav.books"
     | "nav.photos"
-    | "nav.anime";
+    | "nav.anime"
+    | "nav.contact";
 };
 
 const NAV_LINKS: NavLink[] = [
@@ -27,6 +28,7 @@ const NAV_LINKS: NavLink[] = [
   { href: "/books", labelKey: "nav.books" },
   { href: "/photos", labelKey: "nav.photos" },
   { href: "/anime", labelKey: "nav.anime" },
+  { href: "/contact", labelKey: "nav.contact" },
 ];
 
 export default function Header() {
