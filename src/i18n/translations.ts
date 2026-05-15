@@ -98,7 +98,21 @@ export type TranslationKey =
   | "animeDetail.type"
   | "animeDetail.genres"
   | "animeDetail.synopsis"
-  | "common.opensInNewTab";
+  | "common.opensInNewTab"
+  | "nav.contact"
+  | "contact.title"
+  | "contact.subtitle"
+  | "contact.name"
+  | "contact.namePlaceholder"
+  | "contact.email"
+  | "contact.emailPlaceholder"
+  | "contact.message"
+  | "contact.messagePlaceholder"
+  | "contact.submit"
+  | "contact.submitting"
+  | "contact.successTitle"
+  | "contact.successBody"
+  | "contact.sendAnother";
 
 type Translations = Record<TranslationKey, string>;
 
@@ -203,6 +217,22 @@ export const translations: Record<Locale, Translations> = {
     "animeDetail.genres": "Genres",
     "animeDetail.synopsis": "Synopsis",
     "common.opensInNewTab": "opens in new tab",
+    "nav.contact": "Contact",
+    "contact.title": "Contact Us",
+    "contact.subtitle":
+      "Have a question or feedback? We'd love to hear from you.",
+    "contact.name": "Name",
+    "contact.namePlaceholder": "Your name",
+    "contact.email": "Email",
+    "contact.emailPlaceholder": "you@example.com",
+    "contact.message": "Message",
+    "contact.messagePlaceholder": "Tell us what's on your mind…",
+    "contact.submit": "Send message",
+    "contact.submitting": "Sending…",
+    "contact.successTitle": "Message sent!",
+    "contact.successBody":
+      "Thanks for reaching out. We'll get back to you soon.",
+    "contact.sendAnother": "Send another message",
   },
   es: {
     "nav.home": "Inicio",
@@ -303,5 +333,20 @@ export const translations: Record<Locale, Translations> = {
     "animeDetail.genres": "Géneros",
     "animeDetail.synopsis": "Sinopsis",
     "common.opensInNewTab": "se abre en una pestaña nueva",
+    "nav.contact": "Contacto",
+    "contact.title": "Contáctanos",
+    "contact.subtitle":
+      "¿Tienes una pregunta o comentario? Nos encantaría escucharte.",
+    "contact.name": "Nombre",
+    "contact.namePlaceholder": "Tu nombre",
+    "contact.email": "Correo electrónico",
+    "contact.emailPlaceholder": "tu@ejemplo.com",
+    "contact.message": "Mensaje",
+    "contact.messagePlaceholder": "Cuéntanos qué tienes en mente…",
+    "contact.submit": "Enviar mensaje",
+    "contact.submitting": "Enviando…",
+    "contact.successTitle": "¡Mensaje enviado!",
+    "contact.successBody": "Gracias por contactarnos. Te responderemos pronto.",
+    "contact.sendAnother": "Enviar otro mensaje",
   },
 };
