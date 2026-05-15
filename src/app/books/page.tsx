@@ -160,14 +160,16 @@ function BooksSearch() {
                 >
                   <article className="card-hover flex gap-4 rounded-lg border border-black/[.08] p-4 transition-colors hover:border-black/[.16] dark:border-white/[.145] dark:hover:border-white/[.25]">
                     {book.coverUrl ? (
-                      <Image
-                        src={book.coverUrl}
-                        alt={book.title}
-                        width={80}
-                        height={120}
-                        className="h-28 w-20 shrink-0 rounded object-cover"
-                        unoptimized
-                      />
+                      <div className="relative h-28 w-20 shrink-0">
+                        <Image
+                          src={book.coverUrl}
+                          alt={book.title}
+                          width={80}
+                          height={120}
+                          className="h-28 w-20 rounded object-cover"
+                          unoptimized
+                        />
+                      </div>
                     ) : (
                       <div className="flex h-28 w-20 shrink-0 items-center justify-center rounded bg-zinc-100 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-600">
                         <svg
