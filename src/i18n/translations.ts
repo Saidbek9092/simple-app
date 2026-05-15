@@ -219,7 +219,8 @@ export const translations: Record<Locale, Translations> = {
     "common.opensInNewTab": "opens in new tab",
     "nav.contact": "Contact",
     "contact.title": "Contact Us",
-    "contact.subtitle": "Have a question or feedback? We'd love to hear from you.",
+    "contact.subtitle":
+      "Have a question or feedback? We'd love to hear from you.",
     "contact.name": "Name",
     "contact.namePlaceholder": "Your name",
     "contact.email": "Email",
@@ -229,7 +230,8 @@ export const translations: Record<Locale, Translations> = {
     "contact.submit": "Send message",
     "contact.submitting": "Sending…",
     "contact.successTitle": "Message sent!",
-    "contact.successBody": "Thanks for reaching out. We'll get back to you soon.",
+    "contact.successBody":
+      "Thanks for reaching out. We'll get back to you soon.",
     "contact.sendAnother": "Send another message",
   },
   es: {
@@ -333,7 +335,8 @@ export const translations: Record<Locale, Translations> = {
     "common.opensInNewTab": "se abre en una pestaña nueva",
     "nav.contact": "Contacto",
     "contact.title": "Contáctanos",
-    "contact.subtitle": "¿Tienes una pregunta o comentario? Nos encantaría escucharte.",
+    "contact.subtitle":
+      "¿Tienes una pregunta o comentario? Nos encantaría escucharte.",
     "contact.name": "Nombre",
     "contact.namePlaceholder": "Tu nombre",
     "contact.email": "Correo electrónico",
